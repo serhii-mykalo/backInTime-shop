@@ -1,7 +1,7 @@
 package ua.shop.backInTime.user;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 
 @Entity
@@ -15,4 +15,11 @@ public class User {
     private String name;
     @Column
     private String password;
+
+    public User() {}
+
+    public User(String name, String password) {
+        this.name = name;
+        this.password = password;
+    }
 }

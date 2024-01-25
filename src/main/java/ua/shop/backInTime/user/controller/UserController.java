@@ -5,24 +5,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import ua.shop.backInTime.user.User;
 import ua.shop.backInTime.user.repository.UserRepository;
+import ua.shop.backInTime.user.service.UserService;
 
 @Controller
 @RequestMapping(path = "/demo")
 public class UserController {
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
     @PostMapping(path = "/add")
     public String addNewUser(@RequestParam String name, @RequestParam String password) {
-        User user = new User();
-        user.setName(name);
-        user.setPassword(password);
-        userRepository.save(user);
+        userService.userRegister(name, password);
         return "Saved";
     }
 
-    @GetMapping(path="/all")
-    public @ResponseBody Iterable<User> getAllUsers() {
-        return userRepository.findAll();
-    }
+//    @GetMapping(path="/all")
+//    public @ResponseBody Iterable<User> getAllUsers() {
+//        return userRepository.findAll();
+//    }
 }

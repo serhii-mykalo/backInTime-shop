@@ -1,10 +1,10 @@
 CREATE TABLE IF NOT EXISTS users(
 id BIGINT AUTO_INCREMENT PRIMARY KEY,
-username VARCHAR(50) NOT NULL UNIQUE CHECK(LENGTH(username)>=2 AND LENGTH(username)<=50),
+username VARCHAR(50) NOT NULL UNIQUE CHECK(LENGTH(username)>=3 AND LENGTH(username)<=50),
 email VARCHAR(50) NOT NULL,
 password VARCHAR(100) NOT NULL,
-created_date DATE NOT NULL,
-last_updated_date DATE NOT NULL
+last_updated_date DATE NOT NULL,
+created_date DATE NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS roles(

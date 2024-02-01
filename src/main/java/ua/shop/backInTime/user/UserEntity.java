@@ -36,12 +36,12 @@ public class UserEntity {
     private String password;
 
     @CreatedDate
-    @Column(name = "created_date", nullable = false, updatable = false)
-    LocalDate createdDate;
-
-    @CreatedDate
     @Column(name = "last_updated_date", nullable = false)
     LocalDate lastUpdatedDate;
+
+    @CreatedDate
+    @Column(name = "created_date", nullable = false, updatable = false)
+    LocalDate createdDate;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),

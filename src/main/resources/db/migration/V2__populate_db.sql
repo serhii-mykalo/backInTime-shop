@@ -1,7 +1,7 @@
 INSERT INTO users (username, password, email, created_date, last_updated_date)
-VALUES ('admin', 'b6WUSS2FVtzGmEZzcj2', 'admin@gmail.com', NOW(), NOW()),
-       ('auth user', 'dp5qWI3G2SnssNn3HcM', 'auth_user@gmail.com', NOW(), NOW()),
-       ('user', 'ng3gfhgfghd57456r', 'user@gmail.com', NOW(), NOW());
+VALUES ('admin', '$2a$10$.IeRI/Gy/8UscmtMmMHyDe2PDe0TMLn.9vb6WUSS2FVtzGmEZzcj2', 'admin@gmail.com', NOW(), NOW()),
+       ('auth user', '$2a$10$uZ/R0BFKt2MqlybEAcO2NebJkdp5qWI3G2SnssNn3HcMHEZAC61Nu', 'auth_user@gmail.com', NOW(), NOW()),
+       ('user', '$2a$10$AcO2NebJkdp5qWI3dp50TMLn.9vbHcMHEZRI/Gy/8Uscmtgfds54', 'user@gmail.com', NOW(), NOW());
 
 INSERT INTO roles (name) VALUES ('ADMIN'),('AUTH_USER'), ('USER');
 

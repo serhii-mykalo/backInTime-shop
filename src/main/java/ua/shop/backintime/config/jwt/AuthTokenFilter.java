@@ -13,6 +13,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -30,7 +31,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
     private JwtUtils jwtUtils;
 
     @Autowired
-    private UserServiceImpl userDetailsService;
+    private UserDetailsService userDetailsService;
 
     private static final Logger logger = LoggerFactory.getLogger(AuthTokenFilter.class);
 
@@ -41,17 +42,9 @@ public class AuthTokenFilter extends OncePerRequestFilter {
             String jwt = parseJwt(request);
             if (Objects.nonNull(jwt) && jwtUtils.validateJwtToken(jwt)) {
                 String username = jwtUtils.getUserNameFromJwtToken(jwt);
-                Claims claims = jwtUtils.getUserRolesFromJwtToken(jwt);
-                Long userId = jwtUtils.getUserIdFromJwtToken(jwt);
-                ArrayList<HashMap<String, String>> athor = (ArrayList) claims.get("Authorities");
-                Set<GrantedAuthority> athorities = new HashSet<>();
-                athor.forEach(map -> map
-                        .forEach((key, value) -> athorities.add(new SimpleGrantedAuthority(value))));
 
-//                TODO: for more security
-//                UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+                UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 
-                UserDetails userDetails = new UserDetailsImpl(userId, username, athorities);
                 UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
                         userDetails, userDetails.getAuthorities(), userDetails.getAuthorities());
                 authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));

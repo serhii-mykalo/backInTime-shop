@@ -7,12 +7,15 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import ua.shop.backintime.user.UserEntity;
 
+import java.io.Serial;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Getter
 public class UserDetailsImpl implements UserDetails {
+
+    @Serial
     private final long serialVersionUID = 1L;
 
     @Getter

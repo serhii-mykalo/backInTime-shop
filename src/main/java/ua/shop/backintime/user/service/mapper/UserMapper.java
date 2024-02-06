@@ -21,7 +21,7 @@ public class UserMapper {
         dto.setLastUpdatedDate(user.getLastUpdatedDate());
         dto.setCreatedDate(user.getCreatedDate());
         dto.setRoles(user.getRoles().stream()
-                .map(RoleEntity::getRoleName).collect(Collectors.toSet()));
+                .map(RoleEntity::getName).collect(Collectors.toSet()));
         return dto;
     }
 

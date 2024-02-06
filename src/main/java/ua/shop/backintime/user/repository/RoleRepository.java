@@ -16,6 +16,8 @@ public interface RoleRepository extends JpaRepository<RoleEntity, Long> {
 
     Optional<RoleEntity> findByName(UserRole name);
 
+//    @Query("SELECT re FROM RoleEntity re WHERE re.roleName IN :name")
+//    Set<RoleEntity> findByNames(@Param("name") Collection<UserRole> names);
     @Query("FROM RoleEntity re WHERE re.name IN :names")
     Set<RoleEntity> findByNames(@Param("names") Collection<UserRole> names);
 }

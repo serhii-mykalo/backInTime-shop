@@ -1,9 +1,9 @@
 package ua.shop.backintime.user;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import ua.shop.backintime.utils.UserRole;
+
 
 @Getter
 @Setter
@@ -16,11 +16,11 @@ public class RoleEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(length = 50)
-    private UserRole roleName;
+    private UserRole name;
 
     public RoleEntity() {}
 
     public RoleEntity(UserRole role) {
-        this.roleName = role;
+        this.name = role;
     }
 }

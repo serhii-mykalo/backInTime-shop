@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @SpringBootApplication
-@EntityScan(basePackages = "/user")
+@EntityScan("ua.*")
 public class BackInTimeShopApplication {
 
 	public static void main(String[] args) {
